@@ -1,0 +1,68 @@
+<div class="header" ng-controller="loginCtrl" ng-show="show">
+    <div class="top-nav">
+        <div class="log col-xs-12">
+            <div class="head col-xs-4">
+                <h2>PSBS</h2>
+            </div>
+            <div class="brand col-xs-6">
+                <form name="myForm1">
+                    <label>Admin Login
+                        <input class="form-control" type="text" name="name" ng-model="admin.name" required>
+                    </label>
+                    <label class="form-label">Password
+                        <input class="form-control" type="password" name="pwd" ng-model="admin.password" required>
+                    </label>
+                    <button class="btn btn-primary" ng-click="login(admin.name,admin.password)">Login</button>                        
+                </form>
+            </div>      
+        </div>
+    </div>
+    <div class="logo">
+        <div class="logoimg">
+            <img src="Img/bus5.png" style="widht:70px; height:70px;">
+        </div>
+        <div class="top">
+            <h1>PolyU Shuttle Bus Service</h1>
+        </div>
+        <div class="logoimg1">
+            <img src="Img/bus4.jpg" style="widht:70px; height:70px;">
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<div class="main">
+        <div class="col-md-4" map-lazy-load="https://maps.google.com/maps/api/js" id="map_canvas" style="width:400px; height:400px; margin-left:3em;">
+            <ng-map center="[22.316668, 114.166664]", zoom="11">
+                <marker position="[22.3290164,114.1601938]" title="Siu Ching Mansion"></marker>
+                <marker position="[22.3028393,114.1701048]" title="Chun Fook Mansion"></marker>
+                <marker position="[22.3178049,114.1700263]" title="Hung Kwan House"></marker>
+            </ng-map>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-4 ft">
+            <br>
+            <strong><h4>Route Select:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h4></strong>
+            <br>
+            <label for="fromselect">From:</label>
+            <select name="fromselect"  class="form-control" ng-model="stop.s">
+                <option value="">Please select a staion.</option>
+                <option value="Polyu">Polyu</option>
+                <option value="Chun Fook Mansion">Chun Fook Mansion</option>
+                <option value="Hung Kwan House">Hung Kwan House</option>
+                <option value="Siu Ching Mansion">Siu Ching Mansion</option>
+            </select>
+            <br>                
+            <label for="toselect">To:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <select name="toselect" class="form-control" ng-model="stop.e" > 
+                <option value="">Please select a staion.</option>
+                <option value="Polyu">Polyu</option>
+                <option value="Chun Fook Mansion">Chun Fook Mansion</option>
+                <option value="Hung Kwan House">Hung Kwan House</option>
+                <option value="Siu Ching Mansion">Siu Ching Mansion</option>
+            </select>
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               
+            <button class="btn btn-primary" ng-click="give()">Search</button>
+        </div>
+        <div class="clearfix"></div>
+</div>

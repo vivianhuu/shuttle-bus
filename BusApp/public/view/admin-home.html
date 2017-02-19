@@ -1,0 +1,33 @@
+<div class="header1">
+	<div class="top-nav col-xs-12">
+		<div class="brand1 col-xs-1">
+				<img src="Img/bus5.jpg" style="width: 70px; height: 70px;">
+		</div>
+		<div class="bb col-xs-1">
+			<h2>PSBS</h2>
+		</div>
+		<div class="col-xs-9">
+			<div class="border-left col-xs-7">
+				<h3>Welcome to admin page!</h3>
+			</div>
+			<div class="logout col-xs-2">
+				<a class="btn btn-primary" ui-sref="main">Log Out</a>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="clearfix"></div>
+<div class="main">
+	<div class="row">
+		<div class="side col-xs-2">
+			<ul class="nav nav-pills nav-stacked on-click-make-active">
+				<li ui-sref-active="active"><a ui-sref="admin.postViewAll">All Routes</a></li>
+				<li ui-sref-active="active"><a ui-sref="admin.postNew">Add Route</a></li>
+			</ul>
+		</div>
+		<div class="col-xs-9 border-left-1">
+			<div ui-view></div>
+		</div>
+	</div>			
+</div>
+<div class="clearfix"></div>

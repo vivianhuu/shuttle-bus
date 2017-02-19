@@ -1,0 +1,93 @@
+<!DOCTYPE>
+<html lang="en" ng-app="myApp">
+<head>
+<base href="/"></base>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/index.css">
+<link rel="stylesheet" type="text/css" href="css/admin.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="bootstrap/dist/css/bootstrap-theme.min.css">
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script> -->
+<script>
+ // $(document).ready(function () {
+ //    var map;
+ //    var elevator;
+ //    var myOptions = {
+ //        zoom: 11,
+ //        center: new google.maps.LatLng(22.316668, 114.166664),
+ //        mapTypeId: 'terrain'
+ //    };
+ //    map = new google.maps.Map($('#map_canvas')[0], myOptions);
+
+ //    var addresses = ['Siuching Mansiion', '76 Shan Tung Street', 'Chun Fook Mansion'];
+
+ //    for (var x = 0; x < addresses.length; x++) {
+ //        $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address='+addresses[x]+'&sensor=false', null, function (data) {
+ //            if (data.results.length >0) {
+ //               var p = data.results[0].geometry.location
+ //                var latlng = new google.maps.LatLng(p.lat, p.lng);
+ //                new google.maps.Marker({
+ //                    position: latlng,
+ //                    map: map
+ //                }); 
+ //            };
+ //        });
+ //      }
+ //    });
+</script>
+  <title>PolyU Shuttle Bus</title>
+</head>
+<body>
+<div class="content">
+    <div class="container">
+        <!-- <div class="header" ng-controller="loginCtrl" ng-show="show">
+            <div class="top-nav">
+                <div class="log col-xs-12">
+                	<div class="head col-xs-4">
+                		<h2>PSBS</h2>
+                	</div>
+                    <div class="brand col-xs-6">
+                        <form name="myForm1">
+                            <label>Admin Login
+                                <input class="form-control" type="text" name="name" ng-model="admin.name" required>
+                            </label>
+                            <label class="form-label">Password
+                                <input class="form-control" type="password" name="pwd" ng-model="admin.password" required>
+                            </label>
+                            <button class="btn btn-primary" ng-click="login(admin.name,admin.password)">Login</button>
+                            
+                        </form>
+                    </div>      
+                </div>
+            </div>
+            <div class="logo">
+                <div class="logoimg">
+                    <img src="Img/bus5.png" style="widht:70px; height:70px;">
+                </div>
+                <div class="top">
+                    <h1>PolyU Shuttle Bus Service</h1>
+                </div>
+                <div class="logoimg1">
+                    <img src="Img/bus4.jpg" style="widht:70px; height:70px;">
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div> -->
+        <div ui-view></div>
+        <div class="footer">
+            <p> &copy; 2015 PolyU Shuttle Bus. All rights reserved.</p>
+        </div>
+    </div>
+ </div>
+<script src="angular/angular.min.js"></script>
+<script src="angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="ngmap/build/scripts/ng-map.min.js"></script>
+<script src="controllers/app.js"></script>
+<script src="controllers/adminModule.js"></script>
+<script src="controllers/controllers.js"></script>
+<script src="controllers/controller_admin_route.js"></script>
+</body>
+</html>
+

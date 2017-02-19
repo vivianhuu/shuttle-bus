@@ -1,0 +1,90 @@
+<div class="row">
+	<div class="col-xs-10" style="margin-left: 6em;">
+		<form name="newPostForm" class="form-horizontal" novalidate role="form">
+			<h2>Route Info</h2>
+			<hr>
+			<div class="form-group col-xs-7" style="margin-left: 1em;">
+				<label for="title" class="control-label">Route Title:</label>
+				<input type="text" name="title" class="form-control" ng-model="title" ng-required="true" id="title" placeholder="Title">
+				<span class="error-message" ng-show="newPostForm.title.$dirty && newPostForm.title.$invalid">Title is mandatory</span>
+			</div>
+			<div class="form-group col-xs-7" style="margin-left: 1em;">
+				<label for="start" class="control-label">Start:</label>
+				<select name="start" ng-model="start" class="form-control">
+					<option value="">Please select a station.</option>
+					<option value="Polyu">Polyu</option>
+					<option value="Chun Fook Mansion">Chun Fook Mansion</option>
+					<option value="Hung Kwan House">Hung Kwan House</option>
+					<option value="Siu Ching Mansion">Siu Ching Mansion</option>
+				</select>
+			</div>
+			<div class="form-group col-xs-7" style="margin-left: 1em;">
+				<label for="end" class="control-label">End:</label>
+				<select name="end" ng-model="end" class="form-control">
+					<option value="">Please select a station.</option>
+					<option value="Polyu">Polyu</option>
+					<option value="Chun Fook Mansion">Chun Fook Mansion</option>
+					<option value="Hung Kwan House">Hung Kwan House</option>
+					<option value="Siu Ching Mansion">Siu Ching Mansion</option>
+				</select>	
+			</div>
+			<div class="clearfix"></div>
+			<hr>
+			<div class="form-group col-xs-10">
+				<h2>Timetables</h2>
+				<div class="form-group">
+					<h3 style="margin-left: 1em;">Every Monday to Friday:</h3>
+					<table class="table" style="margin-left: 1em;">
+						<thead>
+							<tr>
+								<th>Period</th>
+								<th>Interval</th>
+								<th>&nbsp;</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><input class="form-control" ng-model="period" required></td>
+								<td><input class="form-control" ng-model="interval" required></td>
+								<td><button class="btn btn-primary" ng-click="addt1()">Add</button></td>
+							</tr>
+							<tr ng-repeat="item in t11">
+								<td>{{item.period}}</td>
+								<td>{{item.interval}}</td>
+								<td><button class="btn btn-danger" ng-click="remove(item)">Remove</button></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="form-group">
+					<h3 style="margin-left: 1em;">Every Weekends and Public Holidays:</h3>
+					<table class="table" style="margin-left: 1em;">
+						<thead>
+							<tr>
+								<th>Period</th>
+								<th>Interval</th>
+								<th>&nbsp;</th>
+							</tr>
+						</thead>
+					<tbody>
+						<tr>
+							<td><input class="form-control" ng-model="period2" required></td>
+							<td><input class="form-control" ng-model="interval2" required></td>
+							<td><button class="btn btn-primary" ng-click="addt2()">Add</button></td>
+						</tr>
+						<tr ng-repeat="item in t22">
+							<td>{{item.period}}</td>
+							<td>{{item.interval}}</td>
+							<td><button class="btn btn-danger" ng-click="remove1(item)">Remove</button></td>
+						</tr>
+					</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="form-group" style="float: right; margin-right: 8em;">
+				<button style="margin-right: 2em;" ng-click="saveRoute()" class="btn btn-success">Create</button>
+				<button class="btn btn-danger" ng-click='back()'>Cancel</button>
+			</div>
+		</form>
+	</div>
+</div>

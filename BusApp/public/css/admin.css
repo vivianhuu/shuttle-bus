@@ -1,0 +1,35 @@
+.content{
+	background-color: white;
+}
+	.header1{
+		margin: 3em 3em;
+		background-color: #d9edf7;
+		padding-bottom: 5em;
+	}
+	.center-block {
+		margin: 0 5em;
+	}
+	.brand1{
+		float: left;
+		margin-left: 1em;
+	}
+	.side {
+		margin-left: 2.1em;
+		margin-right: 2.1em;
+	}
+	.bb{
+		padding-top: 0em;
+		margin-right: 2em;
+	}
+	.border-left{
+		border-left: 3px solid white;
+		padding-bottom: 1em;
+	}
+	.logout{
+		float: right;
+		margin-top: 1.5em;
+		margin-left: 2em;
+	}
+	.border-left-1{
+		border-left: 3px solid #d9edf7;
+	}
