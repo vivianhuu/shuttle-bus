@@ -17,18 +17,20 @@ app.use(express.static(__dirname+"/public"));
 app.use(express.static(__dirname+"/node_modules"));
 app.use(bodyParser.json());
 
+// login
 app.get('/login/:username/:password',function (req,res){
   console.log(req.params);
-  db.admin.find({"username": req.params.username, "password": req.params.password}, function(err,docs){
+  db.admin.findOne({"username": req.params.username, "password": req.params.password}, function(err,doc){
     if (err) {
       res.status(404);
     } else {
       console.log(req.params.password);
-      res.status(200).json(docs);
+      res.status(200).json(doc);
     };
   });
 });
 
+// search routes
 app.get('/searchResults/:start/:end', function (req, res){
   console.log(req.params);
   db.routes.findOne({"start": req.params.start, "end": req.params.end}, function (err, doc){
@@ -41,6 +43,7 @@ app.get('/searchResults/:start/:end', function (req, res){
   });
 });
 
+// get all routes info
 app.get('/admin/allRoutes', function (req, res) {       
   console.log('I received a GET request');
   db.routes.find(function (err, docs) {        
@@ -53,6 +56,10 @@ app.get('/admin/allRoutes', function (req, res) {
   });
 });
 
+// delete doc(s) from url "admin/allRoutes"
+// if you want to use app.delete, you have to pass the id in the url,
+// like app.delete('/admin/allRoutes/:id', function(req, res){...});
+// the code below can delete multiple docs or doc from the url without id.
 app.post('/admin/allRoutes', function (req, res){
   console.log(req.body);
   db.routes.remove({_id: mongojs.ObjectId(req.body.id)}, function (err, doc){
@@ -65,6 +72,7 @@ app.post('/admin/allRoutes', function (req, res){
   });
 });
 
+// create a new route
 app.post('/admin/new', function (req, res){
   console.log("I get a post request.");
   console.log(req.body);
@@ -77,6 +85,7 @@ app.post('/admin/new', function (req, res){
   });
 });
 
+// get a specific route info
 app.get('/admin/allRoutes/:id', function (req,res){
 	console.log("i received a get request");	
   //var route_id=reg.params.getroute_id;
@@ -90,7 +99,7 @@ app.get('/admin/allRoutes/:id', function (req,res){
     };
 	});
 }); 
-
+ // update specific route
 app.post('/admin/allRoutes/:id', function (req, res){
   db.routes.findAndModify({
     query: {_id: mongojs.ObjectId(req.params.id)},
