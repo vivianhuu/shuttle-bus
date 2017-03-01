@@ -11,7 +11,12 @@ myApp.config(['$stateProvider', '$locationProvider', function ($stateProvider, $
 		url: '/searchResults/:start/:end',
 		templateUrl: 'view/searchResults.html',
 		controller: 'searchResultsCtrl'
-	});
+	})
+	.state('showAll', {
+		url: '/relativeRoutes/:station',
+		templateUrl: 'view/relativeRoutes.html',
+		controller: 'showAllCtrl'
+	})
 }])
 .run(['$state', function ($state){
 	$state.go('main');

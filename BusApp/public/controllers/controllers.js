@@ -18,7 +18,7 @@ angular.module('myApp').controller('loginCtrl', function ($scope, $http, $state,
 		};
 	};
 })
-.controller('mainCtrl', ['$state', '$scope', function ($state, $scope){
+.controller('mainCtrl', ['$state', '$scope', 'NgMap', '$stateParams', function ($state, $scope, NgMap, $stateParams){
 	$scope.give = function (){
 		if ($scope.stop.s === $scope.stop.e) {
 			alert("Please select different stations!");
@@ -32,6 +32,15 @@ angular.module('myApp').controller('loginCtrl', function ($scope, $http, $state,
 	$scope.back = function(){
 		$state.go('main');
 	};
+	NgMap.getMap().then(function (map){
+		$scope.map = map;
+	});
+	$scope.positions = [{name: 'Siu Ching Mansion', lat: 22.3290164, lng: 114.1601938}, {name: 'Chun Fook Mansion', lat: 22.3028393, lng: 114.1701048}, {name: 'Hung Kwan House', lat: 22.3178049, lng: 114.1700263}];
+	$scope.clickMarker = function(event, position){
+		$state.go('showAll', {
+			station: position.name
+		});
+	};
 }])
 .controller('searchResultsCtrl', ['$state', '$scope', '$stateParams', '$http', '$location', function ($state, $scope, $stateParams, $http, $location){
 	var start = $stateParams.start;
@@ -39,15 +48,8 @@ angular.module('myApp').controller('loginCtrl', function ($scope, $http, $state,
 	$scope.table = true;
 	$http.get('/searchResults/'+start+'/'+end).then(function (response){
 		if (response.status == 200 && response.data != null) {
-			// var route = {};
-			// route = response.data;
-			//console.log(route);
 			$scope.route = response.data;
 			console.log($scope.route);
-			// $scope.route.busno = route.busno;
-			// $scope.route.start = route.start;
-			// $scope.route.end = route.end;
-			// $scope.route.timetables = route.timetables;
 			$scope.message = "";
 			var items = [];
 			var j = $scope.route.timetables[0].periods.length;
@@ -56,9 +58,6 @@ angular.module('myApp').controller('loginCtrl', function ($scope, $http, $state,
 				period: $scope.route.timetables[0].periods[0],
 				interval: $scope.route.timetables[0].intervals[0]
 			};
-			// items[0].title = $scope.route.timetables[0].title;
-			// items[0].period = $scope.route.timetables[0].periods[0];
-			// items[0].interval = $scope.route.timetables[0].intervals[0];
 			for(var i = 1; i<j; i++){
 				items[i] = {
 					title: "",
@@ -82,6 +81,52 @@ angular.module('myApp').controller('loginCtrl', function ($scope, $http, $state,
 		} else {
 			$scope.table = false;
 			$scope.message = "Sorry, no routes are found.";
+		};
+	});
+}])
+.controller('showAllCtrl', ['$state', '$scope', '$stateParams', '$http', '$location', function ($state, $scope, $stateParams, $http, $location){
+	var station = $stateParams.station;
+	$scope.findone = true;
+	$http.get('/relativeRoutes/' + station).then(function (response){
+		if (response.status == 200 && response.data != null) {
+			$scope.findone = true;
+			$scope.showDetail = false;
+			$scope.routes = response.data;
+			$scope.message = "";
+			$scope.items = [];
+			for(var i = 0; i < $scope.routes.length; i++){
+				$scope.routes[i].num = i + 1;
+				var items = [];
+				var j = $scope.routes[i].timetables[0].periods.length;
+				items[0] = {
+					title: $scope.routes[i].timetables[0].title,
+					period: $scope.routes[i].timetables[0].periods[0],
+					interval: $scope.routes[i].timetables[0].intervals[0]
+				};
+				for(var a = 1; a<j; a++){
+					items[a] = {
+						title: "",
+						period: $scope.routes[i].timetables[0].periods[i],
+						interval: $scope.routes[i].timetables[0].intervals[i]
+					};
+				};
+				items[j] = {
+					title: $scope.routes[i].timetables[1].title,
+					period: $scope.routes[i].timetables[1].periods[0],
+					interval: $scope.routes[i].timetables[1].intervals[0]
+				};
+				for (var d=1; d< $scope.routes[i].timetables[1].periods.length; d++) {
+					items[d+j] = {
+						title: "",
+						period: $scope.routes[i].timetables[1].periods[d],
+						interval: $scope.routes[i].timetables[1].intervals[d]
+					};
+				};
+				$scope.items.push(items);
+			};
+		} else {
+			$scope.findone = false;
+			$scope.message = "Sorry, no routes contains " + station + "!";
 		};
 	});
 }]);

@@ -32,10 +32,8 @@
 </div>
 <div class="main">
         <div class="col-md-4" map-lazy-load="https://maps.google.com/maps/api/js" id="map_canvas" style="width:400px; height:400px; margin-left:3em;">
-            <ng-map center="[22.316668, 114.166664]", zoom="11">
-                <marker position="[22.3290164,114.1601938]" title="Siu Ching Mansion"></marker>
-                <marker position="[22.3028393,114.1701048]" title="Chun Fook Mansion"></marker>
-                <marker position="[22.3178049,114.1700263]" title="Hung Kwan House"></marker>
+            <ng-map center="[22.316668, 114.166664]", zoom="11" id="main-map">
+                <marker ng-repeat="position in positions" position="[{{position.lat}}, {{position.lng}}]" title="{{position.name}}" on-click="clickMarker({{position}})"></marker>
             </ng-map>
         </div>
         <div class="col-md-1"></div>
