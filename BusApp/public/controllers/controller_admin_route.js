@@ -102,9 +102,11 @@ angular.module('admin').controller('allRoutesCtrl',['$scope','$http', '$state', 
 			if (response.status == 201) {
 				alert('Successfully create new route!');
 				$state.go('admin.postViewAll');
-			} else {
-				alert('Something wrong with the server, please try again.');
+			} else if (response.status == 202) {
+				alert(response.data.message);
 			};
+		}).catch(function (){
+			alert("Something wrong with server, please try again.");
 		});
 	};
 	$scope.back = function (){

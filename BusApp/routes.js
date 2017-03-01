@@ -75,11 +75,19 @@ app.post('/admin/allRoutes', function (req, res){
 app.post('/admin/new', function (req, res){
   console.log("I get a post request.");
   console.log(req.body);
-  db.routes.insert(req.body, {w: 1}, function (err, doc){
+  db.routes.findOne({start: req.body.start, end: req.body.end}, function (err, doc){
     if (err) {
       res.status(404);
+    } else if (doc != null) {
+      res.status(202).json({message: "You have create this route!"});
     } else {
-      res.status(201).json(doc);
+      db.routes.insert(req.body, {w: 1}, function (err, doc){
+        if (err) {
+          res.status(404);
+        } else {
+          res.status(201).json(doc);
+        };
+      });
     };
   });
 });

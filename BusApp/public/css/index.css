@@ -1,78 +1,160 @@
 .content{
-       background-color: white;
-  }
-  .container{
-  	border: 3px solid #d9edf7;
+    background-color: white;
+}
+.container{
+ 	border: 3px solid #d9edf7;
     border-radius: 2em;
-  }
-	.header{
-	   margin: 3em 0;
-		
+}
+.header{
+	margin: 3em 0;	
+}
+.topnav{
+	display: inline;
+}
+.brand{
+	margin-left: 10em;
+}
+.head {
+	margin-left: 2em;
+}
+@-webkit-keyframes blink {
+	0% {
+		opacity: 1;
 	}
-	.topnav{
-		display: inline;
+	50% {
+		opacity: 0.5;
 	}
-	.brand{
-		margin-left: 10em;
+	75% {
+		opacity: 0.25;
 	}
-	.head {
-		margin-left: 2em;
+	100% {
+		opacity: 0;
 	}
-	.logoimg{
-	   float: left;
-	   margin-left: 11em;
-	   padding-right: 1em;
-       padding-top: 3em;
-       padding-bottom: 2em;
+}
+@-moz-keyframes blink {
+	0% {
+		opacity: 1;
 	}
-	.logoimg1{
-		float: left;
-		padding-left: 3em;
-		padding-right: 4em;
-        padding-top: 3em;
-        padding-bottom: 2em;
+	50% {
+		opacity: 0.5;
 	}
-	.top{
-		float: left;
-        padding-left: 4em;
-        padding-right: 2em;
-        padding-top: 2.5em;
-        padding-bottom: 2em;
+	75% {
+		opacity: 0.25;
 	}
-	.log{
-		float: left;
-		display: inline;
-		background-color: #d9edf7;
-		padding-left: 3em;
-		padding-right: 1em;	
-		padding-top: 1em;
-       	margin-right: 2em;
+	100% {
+		opacity: 0;
 	}
-	.search{
-		float: left;
-		padding-left: 9em;
-		padding-right: 7em;
+}
+@-webkit-keyframes blink1 {
+	0% {
+		opacity: 0;
 	}
-	.main{
-		padding-left: 4em;
-
+	50% {
+		opacity: 0.25;
 	}
-	
-	
-	.ft{
-		float: left;
-		position: relative;
-		padding: 5em 0 5em 8em;
+	75% {
+		opacity: 0.5;
 	}
-    .ft button{
+	100% {
+		opacity: 1;
+	}
+}
+@-moz-keyframes blink1 {
+	0% {
+		opacity: 0;
+	}
+	50% {
+		opacity: 0.25;
+	}
+	75% {
+		opacity: 0.5;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+.logoimg{
+    float: left;
+    margin-left: 11em;
+    padding-right: 1em;
+    padding-top: 3em;
+    padding-bottom: 2em;
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    -ms-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
+    -webkit-animation-direction: normal;
+    -webkit-animation-duration: 4s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-name: blink;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-direction: normal;
+    -moz-animation-duration: 4s;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-name: blink;
+    -moz-animation-timing-function: ease-in-out;
+}
+.logoimg1{
+	float: left;
+	padding-left: 3em;
+	padding-right: 4em;
+    padding-top: 3em;
+    padding-bottom: 2em;
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    -ms-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
+    -webkit-animation-direction: normal;
+    -webkit-animation-duration: 4s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-name: blink1;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-direction: normal;
+    -moz-animation-duration: 4s;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-name: blink1;
+    -moz-animation-timing-function: ease-in-out;
+}
+.top{
+	float: left;
+    padding-left: 4em;
+    padding-right: 2em;
+    padding-top: 2.5em;
+    padding-bottom: 2em;
+}
+.log{
+	float: left;
+	display: inline;
+	background-color: #d9edf7;
+	padding-left: 3em;
+	padding-right: 1em;	
+	padding-top: 1em;
+  	margin-right: 2em;
+}
+.search{
+	float: left;
+	padding-left: 9em;
+	padding-right: 7em;
+}
+.main{
+	padding-left: 4em;
+}
+.ft{
+	float: left;
+	position: relative;
+	padding: 5em 0 5em 8em;
+}
+.ft button{
     float: right;
-    }
-	.footer{
-		margin-top: 4em;
-        margin-bottom: 6em;
-		text-align: center;
-		background-color: white;
-	}
-	.footer p{
-		font-size: 15px;
-	}
+}
+.footer{
+	margin-top: 4em;
+    margin-bottom: 6em;
+	text-align: center;
+	background-color: white;
+}
+.footer p{
+	font-size: 15px;
+}
